@@ -1,8 +1,6 @@
-% Un "processing" pour l'apprentissage de C
+% Un "Processing" pour l'apprentissage de C
 % MB
 % 13 aout 2019
-
-
 
 # Motivation 
 
