@@ -1,6 +1,8 @@
 % A Processing-like environment for teaching C to beginners
-% MB
+% Michel Billaud 
 % 16 january 2020
+
+(c) Michel Billaud, <michel.billaud@laposte.net>, 2020
 
 # Motivation for this work
 
@@ -21,8 +23,8 @@ différential equation solving etc.).
 
 Nowadays, such examples are much less motivating for our students who
 start learning how to program.  Multiplying two matrices is only a
-good exercice with embedded loops, only if you don't have have to
-spend time to explain what a matrix is.
+good exercice with embedded loops, only if you don't have to
+waste precious time explaining what a matrix is.
 
 
 ## Avoid mysteries
