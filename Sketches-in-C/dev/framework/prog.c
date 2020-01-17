@@ -176,6 +176,7 @@ void fill_rgba(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
     context.fill_color = color;
     // SDL_SetRenderDrawColor(context.renderer, r, g, b, a);
 }
+
 void stroke_rgba(unsigned int r, unsigned int g, unsigned int b, unsigned int a)
 {
     SDL_Color color = {r, g, b, a};

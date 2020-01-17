@@ -1,4 +1,4 @@
-execs = appli1 inputline
+execs = appli1 inputline test-input-and-key
 
 
 CFLAGS += -std=c11 -Wall -Wextra -Wno-unused -Werror
