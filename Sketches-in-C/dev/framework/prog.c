@@ -2,7 +2,7 @@
  * Adaptation de Processing à la programmation en C
  * M Billaud, 13 aout 2019
  *
- *    avec l'aide de
+ * avec l'aide de
  * https://zestedesavoir.com/tutoriels/1014/utiliser-la-sdl-en-langage-c/
  */
 
@@ -102,8 +102,8 @@ void text(const char string[], int x, int y)
     SDL_DestroyTexture(texture);
 }
 
-void textSize(const char string[], int *p_x, int *p_y) {
-    TTF_SizeUTF8(context.font, string, p_x, p_y);
+void textSize(const char string[], int *p_w, int *p_h) {
+    TTF_SizeUTF8(context.font, string, p_w, p_h);
 }
 
 int main(int argc, char *argv[])
