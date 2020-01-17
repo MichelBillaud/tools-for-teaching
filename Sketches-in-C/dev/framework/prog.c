@@ -15,6 +15,7 @@
 
 #include "defs.h"
 
+// TODO : variable for default font path
 #define DEFAULT_FONT_PATH "/usr/share/fonts/truetype/msttcorefonts/arial.ttf"
 #define DEFAULT_FONT_SIZE 24
 
@@ -36,7 +37,7 @@ struct {
     enum button_type button;
 
     enum key_type key;
-    char text[32];
+    char text[32];                     // TODO use an extensible array
     bool key_pressed;
 } context;
 
