@@ -1,6 +1,6 @@
 % A Processing-like environment for teaching C to beginners
 % MB
-%  16 january 2020
+% 16 january 2020
 
 # Motivation for this work
 
@@ -25,26 +25,34 @@ good exercice with embedded loops, only if you don't have have to
 spend time to explain what a matrix is.
 
 
-## Avoid cognitive overload
+## Avoid mysteries
 
-Un programme, même très simple comme HelloWorld en Java,
-nécessite d'évoquer un grand nombre de notions : classe, méthode `Main`,
-méthodes statiques, objet `System.out` et ses méthodes etc.
+Even the traditional `HelloWorld` first program in Java involves a
+large number of notions: `class`, `Main` method as en entry point,
+`static`, the `System.out` object and its methods etc.
 
-Même si c'est pour dire qu'on en reparlera plus tard, ce sont des
-détails qu'on ne peut ignorer, et qui perturbent les étudiants, qui en
-retirent l'impression que la programmation est pleine de mystères.
+Teachers usually don't try to provide explanations et this point,
+anyway these are details that can't be ignored.  This disturbs the
+students, leaving them with the impression that the programming is
+full of magic spellings.
 
 ## Why Processing is a success
 
-D'où le succès d'un environnement comme Processing, où on peut écrire
-à moindre frais des programmes qui
-font des dessins et des animations, 
+This explains the success of an environment like  Processing, 
+where  
 
-- il y a très peu de "code mystérieux" à écrire sans comprendre à quoi
-  il sert,
-- ce type de sujet est plus à même d'exciter l'imagination des
-apprentis programmeurs, pour se créer eux-mêmes des exercices, que la
-recherche d'un PGCD, le calcul d'une factorielle ou des solutions
-d'une équation du second degré.
+- simple  programs can be written
+by beginners without much explanations.
+- graphics and animations can be done easily.
 
+Practice, and hence the motivation to practice, is the key for a successful
+learning of computer programmine.
+
+This type of exemples/exercices is much more likely to motivate their
+own exercices, at home then the traditional solving of second-degree
+equations or summing the elements of an array.
+
+## So ?
+
+We're trying to develop something similar for C programming,
+with a library hiding the complexity of SDL.
