@@ -1,3 +1,7 @@
+#
+# Make in subdirs.
+#
+
 all:
 	(cd framework ; make)
 	(cd examples ; make)
