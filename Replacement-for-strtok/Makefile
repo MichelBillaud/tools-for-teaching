@@ -4,10 +4,10 @@ CFLAGS += -MMD
 
 execs = main
 
-main: main.o get_next_token.o
+how-to-use-it: how-to-use-it.o get_next_token.o
 
 # for strndup
-main.o : CFLAGS += -D_POSIX_C_SOURCE=200809L
+how-to-use-it.o : CFLAGS += -D_POSIX_C_SOURCE=200809L
 
 -include $(wildcard *.d)
 

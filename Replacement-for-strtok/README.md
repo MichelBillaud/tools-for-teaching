@@ -66,7 +66,7 @@ while (true) {
 
 ## Tests
 
-- [main.c](main.c)
+- [how-to-use-it.c](how-to-use-it.c) -- tests
 - [Makefile](Makefile)
 
 ## Running the test
