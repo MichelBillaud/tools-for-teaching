@@ -5,7 +5,7 @@
 
 # Why?
 
-I got sick and tired with the used of `strtok` function,
+I got sick and tired with the `strtok` function,
 as a way to scan a string, token by token.
 
 Reasons are in the man page:
