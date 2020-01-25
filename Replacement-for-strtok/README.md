@@ -1,6 +1,6 @@
 # A replacement for the infamous strtok function.
 
--  Michel Billaud, 2008
+-  Michel Billaud, 2020
 - <michel.billaud@laposte.net> 
 
 # Why?
@@ -28,6 +28,13 @@ Here we give the code of a `get_next_token()` function which moves
 a pointer along the string to be explored, and returns the address of
 next token.  
 
+Benefits
+
+- easy to use
+- doesn't modify the string
+- thread safe.
+
+
 As the pointer is moved to the first char after the token,
 it is easy to
 
@@ -37,16 +44,16 @@ it is easy to
  
 ~~~C
 const char *where = string;
-	while (true) {
-		// locate a token
-		const char *start = get_next_token(&where, " :,");
-		if (start == NULL) break;
+while (true) {
+	// locate a token
+	const char *start = get_next_token(&where, " :,");
+	if (start == NULL) break;
 		
-		// get a copy, and display it
-	    char *token = strndup(start, where - start); 
-		printf("-> \"%s\"\n", token);
-		free(token);
-  }
+	// get a copy, and display it
+	char *token = strndup(start, where - start); 
+	printf("-> \"%s\"\n", token);
+	free(token);
+}
 ~~~
 
 
