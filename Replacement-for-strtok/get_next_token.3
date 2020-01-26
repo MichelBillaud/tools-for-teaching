@@ -1,0 +1,154 @@
+.\" Copyright (C) 2020, Michel Billaud <michel.billaud@laposte.net>
+.\"
+.\" %%%LICENSE_START(VERBATIM)
+.\" Permission is granted to make and distribute verbatim copies of this
+.\" manual provided the copyright notice and this permission notice are
+.\" preserved on all copies.
+.\"
+.\" Permission is granted to copy and distribute modified versions of this
+.\" manual under the conditions for verbatim copying, provided that the
+.\" entire resulting derived work is distributed under the terms of a
+.\" permission notice identical to this one.
+.\"
+.\" Since the Linux kernel and libraries are constantly changing, this
+.\" manual page may be incorrect or out-of-date.  The author(s) assume no
+.\" responsibility for errors or omissions, or for damages resulting from
+.\" the use of the information contained herein.  The author(s) may not
+.\" have taken the same level of care in the production of this manual,
+.\" which is licensed free of charge, as they might when working
+.\" professionally.
+.\"
+.\" Formatted or processed versions of this manual, if unaccompanied by
+.\" the source, must acknowledge the copyright and authors of this work.
+.\" %%%LICENSE_END
+.\"
+.TH GET_NEXT_TOKEN 3  2020-01-26 "XXX" "Own Library"
+.SH NAME
+get_next_token \- extract tokens from strings
+.SH SYNOPSIS
+.nf
+.B #include <get_next_token.h>
+.PP
+.BI "const char *get_next_token(const char **" start ", const char *" delimiters ");"
+.PP
+.fi
+.PP
+.ad l
+.SH DESCRIPTION
+The
+.BR get_next_token ()
+function breaks a string into a sequence of zero or more nonempty tokens.
+On the first call to
+.BR strtok (),
+the string to be parsed should be
+specified in
+.IR start .
+.PP
+The
+.I delimiters
+argument specifies a set of bytes that
+delimit the tokens in the parsed string.
+The caller may specify different strings in
+.I delimiters
+in successive
+calls that parse the same string.
+.PP
+Each call to
+.BR get_next_token ()
+returns a pointer to a
+the first byte of the next token,
+and
+.I start
+is moved tio the next byte after the token.
+If no more tokens are found,
+.BR get_next_token ()
+returns NULL.
+.PP
+The end of each token is found by scanning forward until either
+the next delimiter byte is found or until the
+terminating null byte (\(aq\\0\(aq) is encountered.
+.PP
+A sequence of two or more contiguous delimiter bytes in
+the parsed string is considered to be a single delimiter, and that
+delimiter bytes at the start or end of the string are ignored.
+The tokens returned by
+.BR get_next_token ()
+are always nonempty.
+Thus, for example, given the string "\fIaaa;;bbb,\fP",
+successive calls to
+.BR get_next_token ()
+that specify the delimiter string "\fI;,\fP"
+would return the strings
+"\fIaaa;;bbb,\fP" 
+"\fIaaa\fP" and "\fIbbb,\fP",
+and then a null pointer.
+.PP
+The
+.BR get_next_token ()
+function is a reentrant function.
+.SH RETURN VALUE
+The
+.BR strtok ()
+functions return a pointer to
+the first byte of the next token, or NULL if there are no more tokens.
+.SH ATTRIBUTES
+For an explanation of the terms used in this section, see
+.BR attributes (7).
+.TS
+allbox;
+lb lb lb
+l l l.
+Interface	Attribute	Value
+T{
+.BR get_net_token ()
+T}	Thread safety	MT-Safe
+.TE
+.SH BUGS
+To be discovered.
+.SH EXAMPLE
+The program below breaks a string into tokens.
+The first command-line argument specifies the string to be parsed.
+The second argument specifies the delimiter byte(s)
+to be used to separate that string into tokens.
+.PP
+An example of the output produced by this program is the following:
+.PP
+.in +4n
+.EX
+.RB "$" " ./a.out \(aqa/bbb///cc;xxx:yyy:\(aq \(aq:;/\(aq"
+1 : a
+2 : bbb
+3 : cc
+4 : xxx
+5 : yyy
+.EE
+.in
+.SS Program source
+\&
+.EX
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "get_next_token.h"
+
+int main(int argc, char *argv[])
+{	
+    if (argc != 3) {
+        fprintf(stderr, "Usage: %s string delimiters\\n",
+                        argv[0]);
+        exit(EXIT_FAILURE);
+    }
+
+    const char *start = argv[1];
+    const char *delimiters = argv[2];
+    for(int i = 1;; i++) { 
+       const char *token = get_next_token(& start, delimiters);
+       if (token == NULL) {
+          break;
+       }
+       printf("%d : %.*s\n", i, (int) (start-token), token);
+    }
+
+    exit(EXIT_SUCCESS);
+}
+.EE

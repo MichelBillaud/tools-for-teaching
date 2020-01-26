@@ -63,6 +63,7 @@ while (true) {
 
 - [get_next_token.c](get_next_token.c)
 - [get_next_token.h](get_next_token.h)
+- [get_next_token.3](get_next_token.3)  -- man page
 
 ## Tests
 
